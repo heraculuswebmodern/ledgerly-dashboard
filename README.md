@@ -6,7 +6,7 @@ Ledgerly is a business banking dashboard built as a technical case study: accoun
 
 > Ledgerly is a product demo. It is not a bank, holds no money and connects to no financial institution.
 
-**Live demo:** https://ledgerly-dashboard.vercel.app (once deployed) · **Demo login:** `demo@ledgerly.app` / `ledgerly-demo` (or press **Use demo** on the login page)
+**Live demo:** https://ledgerly-dashboard-one.vercel.app · **Demo login:** `demo@ledgerly.app` / `ledgerly-demo` (or press **Use demo** on the login page)
 
 | Overview (light)                                              | Overview (dark)                                             |
 | ------------------------------------------------------------- | ----------------------------------------------------------- |
