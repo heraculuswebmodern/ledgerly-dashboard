@@ -1,0 +1,255 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Ledgerly design tokens.
+ * Raw brand values live on :root / .dark; Tailwind utilities are mapped in @theme inline.
+ * Text colors were checked for WCAG AA (≥ 4.5:1) against card and page surfaces in both themes.
+ */
+:root {
+  --radius: 0.75rem;
+
+  /* Brand */
+  --ink: #0b1b33;
+  --emerald: #10b981;
+  --teal: #0ea5a4;
+  --brand-gradient: linear-gradient(135deg, #10b981 0%, #0ea5a4 100%);
+
+  /* Surfaces */
+  --background: #f7f8fa;
+  --foreground: #0b1b33;
+  --card: #ffffff;
+  --card-foreground: #0b1b33;
+  --popover: #ffffff;
+  --popover-foreground: #0b1b33;
+  --subtle: #f0f2f6;
+
+  /* Interactive */
+  --primary: #0b1b33;
+  --primary-foreground: #ffffff;
+  --secondary: #eef1f5;
+  --secondary-foreground: #0b1b33;
+  --muted: #eef1f5;
+  --muted-foreground: #5b6676;
+  --accent: #eef1f5;
+  --accent-foreground: #0b1b33;
+  --brand: #10b981;
+  --brand-foreground: #0b1b33;
+  --destructive: #c2362f;
+  --destructive-foreground: #ffffff;
+
+  /* Lines */
+  --border: #e3e7ed;
+  --input: #d9dee6;
+  --ring: #0ea5a4;
+
+  /* Semantic money + status (text-safe) */
+  --positive: #047857;
+  --positive-soft: #e7f6ef;
+  --negative: #c2362f;
+  --negative-soft: #fbecea;
+  --pending: #92400e;
+  --pending-soft: #fdf3e1;
+  --info: #1d4ed8;
+  --info-soft: #e8efff;
+
+  /* Charts (validated categorical order, light) */
+  --chart-in: #10b981;
+  --chart-out: #e0605a;
+  --chart-net: #0b1b33;
+  --chart-1: #0d9488;
+  --chart-2: #eb6834;
+  --chart-3: #2a78d6;
+  --chart-4: #eda100;
+  --chart-5: #6250d6;
+  --chart-6: #e87ba4;
+  --chart-other: #a3acb9;
+  --chart-grid: #e9edf2;
+
+  /* Shell */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0b1b33;
+  --sidebar-border: #e3e7ed;
+  --sidebar-accent: #eef1f5;
+
+  /* Hero (overview + login) stays navy in both themes */
+  --hero: #0b1b33;
+  --hero-foreground: #f4f7fb;
+  --hero-muted: #9fb0c8;
+  --hero-line: rgba(255, 255, 255, 0.07);
+
+  --shadow-card: 0 1px 2px rgba(11, 27, 51, 0.04), 0 1px 1px rgba(11, 27, 51, 0.03);
+  --shadow-pop: 0 12px 32px -8px rgba(11, 27, 51, 0.18), 0 2px 6px rgba(11, 27, 51, 0.06);
+}
+
+.dark {
+  --background: #0a1220;
+  --foreground: #e6ebf2;
+  --card: #0f1a2b;
+  --card-foreground: #e6ebf2;
+  --popover: #111d30;
+  --popover-foreground: #e6ebf2;
+  --subtle: #0d1727;
+
+  --primary: #e6ebf2;
+  --primary-foreground: #0b1b33;
+  --secondary: #16233a;
+  --secondary-foreground: #e6ebf2;
+  --muted: #16233a;
+  --muted-foreground: #8b97a8;
+  --accent: #16233a;
+  --accent-foreground: #e6ebf2;
+  --brand: #10b981;
+  --brand-foreground: #0b1b33;
+  --destructive: #f87171;
+  --destructive-foreground: #0b1b33;
+
+  --border: #1c2a3f;
+  --input: #24344d;
+  --ring: #2dd4bf;
+
+  --positive: #34d399;
+  --positive-soft: rgba(16, 185, 129, 0.12);
+  --negative: #f87171;
+  --negative-soft: rgba(248, 113, 113, 0.12);
+  --pending: #fbbf24;
+  --pending-soft: rgba(251, 191, 36, 0.12);
+  --info: #60a5fa;
+  --info-soft: rgba(96, 165, 250, 0.12);
+
+  --chart-in: #34d399;
+  --chart-out: #f87171;
+  --chart-net: #e6ebf2;
+  --chart-1: #0f9f90;
+  --chart-2: #d95926;
+  --chart-3: #3987e5;
+  --chart-4: #c98500;
+  --chart-5: #9085e9;
+  --chart-6: #d55181;
+  --chart-other: #56647a;
+  --chart-grid: #1a273b;
+
+  --sidebar: #0c1524;
+  --sidebar-foreground: #e6ebf2;
+  --sidebar-border: #1c2a3f;
+  --sidebar-accent: #16233a;
+
+  --hero: #0e1d36;
+  --hero-foreground: #f4f7fb;
+  --hero-muted: #9fb0c8;
+  --hero-line: rgba(255, 255, 255, 0.06);
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-pop: 0 16px 40px -12px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-subtle: var(--subtle);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-emerald: var(--emerald);
+  --color-teal: var(--teal);
+
+  --color-positive: var(--positive);
+  --color-positive-soft: var(--positive-soft);
+  --color-negative: var(--negative);
+  --color-negative-soft: var(--negative-soft);
+  --color-pending: var(--pending);
+  --color-pending-soft: var(--pending-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent: var(--sidebar-accent);
+
+  --color-hero: var(--hero);
+  --color-hero-foreground: var(--hero-foreground);
+  --color-hero-muted: var(--hero-muted);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-pop: var(--shadow-pop);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings:
+      "cv11" 1,
+      "ss01" 1;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--teal) 30%, transparent);
+  }
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+@utility bg-brand-gradient {
+  background-image: var(--brand-gradient);
+}
+
+/* Horizontal ruled lines: the "ledger paper" motif used on the hero surfaces. */
+@utility ledger-lines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 27px,
+    var(--hero-line) 27px,
+    var(--hero-line) 28px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
